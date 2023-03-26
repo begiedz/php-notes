@@ -1,40 +1,13 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App;
 
-include_once('./src/View.php');
+include_once('./src/Controller.php');
 include_once('./src/utils/debug.php');
 
-// dump('test');
-// dump('=== test 2 ===');
-
-const DEFAULT_ACTION = 'list';
-
-$action = $_GET['action'] ?? DEFAULT_ACTION;
-
-$viewParams = [];
-
-
-switch ($action) {
-    case 'create':
-        $page = 'create';
-        $created = false;
-        if (!empty($_POST)) {
-            $viewParams = [
-            'title' => $_POST['title'],
-            'description' => $_POST['description'],
-            ];
-         $created = true;
-        }
-        $viewParams['created'] = $created;
-        break;
-    default:
-        $page = 'list';
-        $viewParams['resultList'] = 'Wyświetlamy listę notatek';
-        break;
-}
-
-$view = new View();
-$view->render($page, $viewParams);
+$controller = new Controller($_GET, $_POST);
+$controller->run();
 
 ?>
