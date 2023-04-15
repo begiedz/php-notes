@@ -6,7 +6,7 @@ namespace App;
 
 include_once('./src/View.php');
 require_once('./config/config.php');
-require_once('./src/Database.php')
+require_once('./src/Database.php');
 
 class Controller
 {
