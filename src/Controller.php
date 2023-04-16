@@ -19,7 +19,7 @@ class Controller
     public function __construct(array $request)
     {
         $this->request = $request;
-        $this->View $view = new View();
+        $this->view = new View();
         $this->database = new Database(self::$configuration);
     }
     public static function initConfiguration(array $configuration): void
@@ -30,7 +30,7 @@ class Controller
     {
         $viewParams = [];
 
-        switch ($this->$action()) {
+        switch ($this->action()) {
             case 'create':
                 $page = 'create';
                 $created = false;
@@ -47,17 +47,20 @@ class Controller
             break;
         default:
             $page = 'list';
-            $viewParams['before'] = $data['before'] ?? null;;
+            $viewParams =[
+                'notes' => $this->database->getNotes(),
+                'before' => $data['before'] ?? null
+            ];
             break;
         }
-        $this->$view->render($page, $viewParams);
+        $this->view->render($page, $viewParams);
     }
 
 
     private function action(): string
     {
         $data = $this -> getRequestGet();
-        return $data['action'] ?? self:DEFAULT_AVTION;
+        return $data['action'] ?? self::DEFAULT_ACTION;
     }
 
     private function getRequestPost():array
@@ -65,7 +68,7 @@ class Controller
         return $this->request['post'] ?? [];
     }
 
-    private dunction getRequestGet(): array
+    private function getRequestGet():array
     {
         return $this->request['get'] ?? [];
     }
