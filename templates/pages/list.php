@@ -35,7 +35,7 @@
                             <td><?php echo (int) $note['id'] ?></td>
                             <td><?php echo htmlentities($note['title']) ?></td>
                             <td><?php echo htmlentities($note['created']) ?></td>
-                            <td><a href=" /?action=show&id=<?php echo (int) $note['id'] ?>">Opcje</td>
+                            <td><a href=" /?action=show&id=<?php echo (int) $note['id'] ?>">Opcje</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
