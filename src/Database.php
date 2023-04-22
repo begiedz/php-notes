@@ -7,7 +7,7 @@ namespace App;
 require_once("Exception/NotFoundException.php");
 
 use App\Exception\StorageException;
-use App\Exception\Configuration;
+use App\Exception\ConfigurationException;
 use App\Exception\NotFoundException;
 use PDO;
 use PDOException;
@@ -41,7 +41,7 @@ class Database
 
     public function getNote(int $id): array
     {
-        try{
+        try {
             $query = "SELECT * FROM notes WHERE id=$id";
             $result = $this->conn->query($query);
             $note = $result->fetch(PDO::FETCH_ASSOC);
@@ -51,14 +51,14 @@ class Database
 
         if (!$note) {
             throw new NotFoundException("Notatka o id: $id nie istnieje.");
+        }
+
+        return $note;
     }
 
-    return $note; 
-    }
-   
     public function getNotes(): array
     {
-        try{
+        try {
             $notes = [];
             $query = "SELECT id,title,created FROM notes";
             $result = $this->conn->query($query, PDO::FETCH_ASSOC);
