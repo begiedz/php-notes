@@ -12,8 +12,8 @@
                 </a>
             </li>
             <li>
-                <a href="/?action=edit&id=<?php echo $note['id']; ?>"></a>
-                <button>Edytuj</button>
+                <a href="/?action=edit&id=<?php echo $note['id']; ?>"> <button>Edytuj</button></a>
+
             </li>
         </ul>
     <?php else : ?>

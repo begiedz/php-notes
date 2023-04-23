@@ -47,10 +47,10 @@ abstract class AbstractController
         if (count($params)) {
             $queryParams = [];
             foreach ($params as $key => $value) {
-                $queryParams = implode('&', $queryParams);
-                $location .= $queryParams;
+                $queryParams[] = urlencode($key) . '=' . urlencode($value);
             }
-
+            $queryParams = implode('&', $queryParams);
+            $location .= '?' . $queryParams;
             header("Location: $location");
             exit;
         }

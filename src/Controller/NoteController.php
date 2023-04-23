@@ -22,6 +22,8 @@ class NoteController extends AbstractController
             ];
             $this->database->createNote($noteData);
             $this->redirect('/', ['before' => 'created']);
+            // header('Location: /?before=created');
+            // exit;
         }
         $this->view->render('create');
     }
@@ -30,12 +32,16 @@ class NoteController extends AbstractController
     {
         $noteId = (int) $this->request->getParam('id');
         if (!$noteId) {
-            $this->redirect('/', ['error', 'missingNoteId']);
+            $this->redirect('/', ['error' => 'missingNoteId']);
+            // header('Location: /?error=missingNoteId');
+            // exit;
         }
         try {
             $note = $this->database->getNote($noteId);
         } catch (NotfoundException $e) {
-            $this->redirect('/', ['error', 'noteNotFound']);
+            $this->redirect('/', ['error' => 'noteNotFound']);
+            // header('Location: /?error=missingNoteId');
+            // exit;
         }
         $this->view->render('show', ['note' => $note]);
     }
@@ -53,7 +59,9 @@ class NoteController extends AbstractController
     {
         $noteId = (int) $this->request->getParam('id');
         if (!$noteId) {
-            $this->redirect('/', ['error', 'missingNoteId']);
+            $this->redirect('/', ['error' => 'missingNoteId']);
+            // header('Location: /?error=missingNoteId');
+            // exit;
         }
         $this->view->render('edit');
     }
