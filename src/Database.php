@@ -55,12 +55,12 @@ class Database
         return $note;
     }
 
-    public function editNote(int $id, array $data)
+    public function editNote(int $id, array $data): void
     {
         try {
             $title = $this->conn->quote($data['title']);
             $description = $this->conn->quote($data['description']);
-            $query = "UPDATE `notes` SET `title`=$title,`description`=$description WHERE `id`=$id;";
+            $query = "UPDATE notes SET title = $title,description = $description WHERE id = $id";
 
             //wykonanie zapytania
             $this->conn->exec($query);

@@ -11,6 +11,12 @@
                     case 'missingNoteId':
                         echo 'Niepoprawny identyfikator notatki!';
                         break;
+                    case 'created':
+                        echo 'Notatka została utworzona';
+                        break;
+                    case 'edited':
+                        echo 'Notatka została utworzona';
+                        break;
                 }
             }
             ?>
