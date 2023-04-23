@@ -11,6 +11,10 @@
                     <button>Powrót do listy notatek</button>
                 </a>
             </li>
+            <li>
+                <a href="/?action=edit&id=<?php echo $note['id']; ?>"></a>
+                <button>Edytuj</button>
+            </li>
         </ul>
     <?php else : ?>
         <div>Brak notatki do wyświetlenia</div>
