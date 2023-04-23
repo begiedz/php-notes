@@ -55,6 +55,20 @@ class Database
         return $note;
     }
 
+    public function editNote(int $id, array $data)
+    {
+        try {
+            $title = $this->conn->quote($data['title']);
+            $description = $this->conn->quote($data['description']);
+            $query = "UPDATE `notes` SET `title`=$title,`description`=$description WHERE `id`=$id;";
+
+            //wykonanie zapytania
+            $this->conn->exec($query);
+        } catch (Throwable $e) {
+            throw new StorageException('Nie udało się edytować notatki.', 400, $e);
+        }
+    }
+
     public function getNotes(): array
     {
         try {
