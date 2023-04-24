@@ -15,7 +15,7 @@
                         echo 'Notatka została utworzona';
                         break;
                     case 'edited':
-                        echo 'Notatka została utworzona';
+                        echo 'Notatka została zaktualizowana';
                         break;
                 }
             }

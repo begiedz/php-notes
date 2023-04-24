@@ -60,6 +60,7 @@ class Database
         try {
             $title = $this->conn->quote($data['title']);
             $description = $this->conn->quote($data['description']);
+
             $query = "UPDATE notes SET title = $title,description = $description WHERE id = $id";
 
             //wykonanie zapytania

@@ -57,7 +57,9 @@ class NoteController extends AbstractController
                 'title' => $this->request->postParam('title'),
                 'description' => $this->request->postParam('description'),
             ];
+
             $this->database->editNote($noteId, $noteData);
+
             $this->redirect('/', ['before' => 'edited']);
         }
 

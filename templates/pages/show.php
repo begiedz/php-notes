@@ -1,5 +1,6 @@
 <div class="show">
-    <?php $note = $params['note'] ?? null; ?>
+    <?php $note = $params['note'] ?? null;
+    dump($note) ?>
     <?php if ($note) : ?>
         <ul>
             <li>Id: <?php echo (int) $note['id'] ?> </li>
