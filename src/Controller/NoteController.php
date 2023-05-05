@@ -49,6 +49,23 @@ class NoteController extends AbstractController
         ]);
     }
 
+    public function deleteAction()
+    {
+    
+    $noteId = (int) $this->request->getParam('id');
+    if (!$noteId) {
+        $this->redirect('/', ['error' => 'missingNoteId']);
+    }
+
+    try {
+        $this->database->deleteNote($noteId);
+    } catch (NotFoundException $e) {
+        $this->redirect('/', ['error' => $e->getMessage()]);
+    }
+
+    $this->redirect('/', ['before' => 'deleted']);
+}
+
     public function editAction()
     {
         if ($this->request->isPost()) {

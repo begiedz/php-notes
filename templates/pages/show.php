@@ -1,6 +1,5 @@
 <div class="show">
-    <?php $note = $params['note'] ?? null;
-    dump($note) ?>
+    <?php $note = $params['note'] ?? null; ?>
     <?php if ($note) : ?>
         <ul>
             <li>Id: <?php echo (int) $note['id'] ?> </li>
@@ -12,9 +11,17 @@
                     <button>Powrót do listy notatek</button>
                 </a>
             </li>
-            <li>
-                <a href="/?action=edit&id=<?php echo $note['id']; ?>"> <button>Edytuj</button></a>
 
+            <li>
+                <a href="/?action=edit&id=<?php echo $note['id']; ?>"> 
+                <button>Edytuj</button>
+            </a>
+            </li>
+
+            <li>
+                <a href="/?action=delete&id=<?php echo $note['id']; ?>">
+                    <button>Usuń</button>
+                </a>
             </li>
         </ul>
     <?php else : ?>
